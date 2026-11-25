@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Modes of convergence in probability theory and Bayesian inference: definitions, theorems, examples and interactive calculations.">
+  <title>Modes of Convergence & Bayesian Inference | Statistics Homework</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero" id="top">
+    <nav class="nav container">
+      <a class="brand" href="#top">STATISTICS <span>·</span> HOMEWORK</a>
+      <div class="nav-links">
+        <a href="#convergence">Convergence</a>
+        <a href="#bayes">Bayesian inference</a>
+        <a href="#conclusion">Conclusion</a>
+      </div>
+    </nav>
+    <div class="hero-content container">
+      <p class="eyebrow">PROBABILITY THEORY & STATISTICAL INFERENCE</p>
+      <h1>Modes of Convergence<br><em>& Bayesian Inference</em></h1>
+      <p class="hero-lead">How random quantities approach their limits, and how evidence changes what we believe.</p>
+      <a class="hero-link" href="#introduction">Explore the topics <span>↓</span></a>
+    </div>
+    <div class="hero-mark">01 / 02</div>
+  </header>
+
+  <main class="container main-content">
+    <section class="intro section" id="introduction">
+      <div class="section-kicker">INTRODUCTION</div>
+      <h2>Two ideas at the heart of statistics</h2>
+      <p class="intro-text">Probability theory describes uncertainty and the behaviour of random variables. Statistical inference uses observed data to learn about the processes that generate them. This page introduces four ways in which random variables can converge and explains how Bayesian inference updates probabilities when new evidence becomes available.</p>
+      <div class="intro-grid">
+        <article class="intro-card">
+          <span class="card-number">I</span>
+          <h3>Convergence</h3>
+          <p>Different mathematical meanings of “getting closer” to a limiting random variable, and their role in the LLN and CLT.</p>
+        </article>
+        <article class="intro-card">
+          <span class="card-number">II</span>
+          <h3>Bayesian inference</h3>
+          <p>A framework for combining prior information with observed evidence to obtain an updated probability.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="convergence">
+      <div class="section-kicker">PART I · PROBABILITY THEORY</div>
+      <h2>Modes of convergence</h2>
+      <p class="section-lead">A sequence of random variables may approach a limiting random variable in different ways. The modes of convergence describe what “approach” means and how strongly the sequence behaves like its limit.</p>
+
+      <div class="definition-panel">
+        <h3>What is a sequence of random variables?</h3>
+        <p>A sequence <span class="math">X<sub>1</sub>, X<sub>2</sub>, …, X<sub>n</sub>, …</span> is a collection of random variables defined on the same probability space. We say that it converges to a random variable <span class="math">X</span> when, as <span class="math">n</span> increases, the sequence approaches <span class="math">X</span> according to a specified criterion.</p>
+        <p class="small-note">The modes are not interchangeable: each one focuses on a different aspect of the approximation.</p>
+      </div>
+
+      <div class="mode-grid">
+        <article class="mode-card">
+          <div class="mode-top"><span class="mode-index">01</span><span class="tag">Probability</span></div>
+          <h3>Convergence in probability</h3>
+          <div class="equation">P(|X<sub>n</sub> − X| &gt; ε) → 0</div>
+          <p>For every positive tolerance <span class="math">ε</span>, the probability that the difference between <span class="math">X<sub>n</sub></span> and <span class="math">X</span> is larger than <span class="math">ε</span> tends to zero.</p>
+          <div class="legend"><strong>Where</strong><br><b>ε</b> – any positive tolerance.<br><b>P(·)</b> – probability of the event inside the parentheses.</div>
+          <p class="example"><strong>Intuition:</strong> large errors become increasingly unlikely, even though individual outcomes do not have to settle down along every sample path.</p>
+          <p class="example"><strong>A closer look:</strong> choose an acceptable error, such as ε = 0.1. We look at how often X<sub>n</sub> differs from X by more than 0.1. As n grows, that probability must get closer to zero. This does not rule out occasional large errors; it says that they become less and less likely.</p>
+          <p class="role"><strong>Role:</strong> this is the type of convergence stated by the Weak Law of Large Numbers.</p>
+        </article>
+
+        <article class="mode-card">
+          <div class="mode-top"><span class="mode-index">02</span><span class="tag">Almost surely</span></div>
+          <h3>Almost sure convergence</h3>
+          <div class="equation">P(lim<sub>n→∞</sub> X<sub>n</sub> = X) = 1</div>
+          <p>The sequence converges to <span class="math">X</span> for all sample outcomes except possibly a set with probability zero.</p>
+          <div class="legend"><strong>Where</strong><br><b>lim X<sub>n</sub></b> – limit of the sequence as n grows.<br><b>Probability 1</b> – the event occurs almost surely.</div>
+          <p class="example"><strong>Intuition:</strong> with probability one, if we follow a single infinite sequence of outcomes, its values eventually get arbitrarily close to the limit.</p>
+          <p class="example"><strong>A closer look:</strong> imagine generating one outcome after another and tracing the resulting sequence. Almost every possible infinite trace eventually stays as close to X as we want. Unlike convergence in probability, this statement concerns the long-run behaviour of individual sample paths, not only the probability of an error at each n.</p>
+          <p class="role"><strong>Role:</strong> this is the type of convergence stated by the Strong Law of Large Numbers.</p>
+        </article>
+
+        <article class="mode-card">
+          <div class="mode-top"><span class="mode-index">03</span><span class="tag">L²</span></div>
+          <h3>Mean-square convergence</h3>
+          <div class="equation">E[(X<sub>n</sub> − X)<sup>2</sup>] → 0</div>
+          <p>The expected squared difference between <span class="math">X<sub>n</sub></span> and <span class="math">X</span> tends to zero. It measures the size of the error using its squared magnitude.</p>
+          <div class="legend"><strong>Where</strong><br><b>E[·]</b> – expected value.<br><b>(X<sub>n</sub> − X)²</b> – squared approximation error.</div>
+          <p class="example"><strong>Intuition:</strong> not only do large errors become unlikely; the average squared error itself becomes small.</p>
+          <p class="example"><strong>A closer look:</strong> first, the error is squared, so an error twice as large contributes four times as much. Then we take its expected value, which averages this squared error over all possible outcomes. For the expectation to approach zero, the estimator must become accurate on average, with large deviations strongly penalized.</p>
+          <p class="role"><strong>Role:</strong> useful in estimation and approximation. For an estimator θ̂<sub>n</sub> of an unknown parameter θ, the quantity E[(θ̂<sub>n</sub> − θ)<sup>2</sup>] is its mean squared error (MSE). Therefore, L² convergence of the estimator to θ means that the MSE tends to zero, providing a strong measure of estimation accuracy and consistency.</p>
+        </article>
+
+        <article class="mode-card">
+          <div class="mode-top"><span class="mode-index">04</span><span class="tag">Distribution</span></div>
+          <h3>Convergence in distribution</h3>
+          <div class="equation">F<sub>n</sub>(x) → F(x)</div>
+          <p>The cumulative distribution functions of <span class="math">X<sub>n</sub></span> converge to the distribution function of <span class="math">X</span> at every continuity point of <span class="math">F</span>.</p>
+          <div class="legend"><strong>Where</strong><br><b>F<sub>n</sub>(x)</b> – CDF of X<sub>n</sub>.<br><b>F(x)</b> – CDF of the limiting variable X.</div>
+          <p class="example"><strong>Intuition:</strong> the probability distributions become closer, even if the random variables themselves do not become close on the same probability space.</p>
+          <p class="example"><strong>A closer look:</strong> instead of comparing individual values of X<sub>n</sub> and X, we compare their cumulative distribution functions. For a chosen threshold x, F<sub>n</sub>(x) tells us the probability that X<sub>n</sub> is at most x. Convergence in distribution means these probabilities approach those of the limiting distribution at its continuity points. The shape of the distribution settles down, but individual outcomes need not.</p>
+          <p class="role"><strong>Role:</strong> this is the type of convergence used by the Central Limit Theorem.</p>
+        </article>
+      </div>
+
+      <div class="subsection">
+        <h3>How are the four modes related?</h3>
+        <p>Some modes of convergence imply others. The implications below hold in general; the reverse implications do not hold without additional assumptions.</p>
+        <div class="implication">
+          <div class="imp-box strong">Almost sure convergence</div>
+          <div class="imp-arrow">↓</div>
+          <div class="imp-box">Convergence in probability</div>
+          <div class="imp-arrow">↓</div>
+          <div class="imp-box">Convergence in distribution</div>
+        </div>
+        <div class="implication second">
+          <div class="imp-box strong blue">Mean-square (L²) convergence</div>
+          <div class="imp-arrow blue-arrow">↓</div>
+          <div class="imp-box">Convergence in probability</div>
+        </div>
+        <div class="note-box"><strong>Important:</strong> mean-square convergence and almost sure convergence are not generally comparable: neither one implies the other in all cases. Also, convergence in distribution is the weakest of these four modes. It does not generally imply convergence in probability.</div>
+      </div>
+
+      <div class="subsection">
+        <h3>The Law of Large Numbers and the Central Limit Theorem</h3>
+        <p>These two fundamental results explain different aspects of the behaviour of sample averages. Suppose <span class="math">X<sub>1</sub>, …, X<sub>n</sub></span> are independent and identically distributed (i.i.d.) random variables with mean <span class="math">μ</span> and finite variance <span class="math">σ²</span>. Their sample mean is:</p>
+        <div class="formula-block"><div class="equation large">X̄<sub>n</sub> = (X<sub>1</sub> + X<sub>2</sub> + ··· + X<sub>n</sub>) / n</div></div>
+        <div class="theorem-grid">
+          <article class="theorem-card">
+            <span class="tag green">LLN · Law of Large Numbers</span>
+            <h4>Where does the average go?</h4>
+            <div class="equation">X̄<sub>n</sub> → μ</div>
+            <p>The sample mean approaches the population mean as the sample size increases.</p>
+            <ul>
+              <li><b>Weak LLN:</b> convergence in probability.</li>
+              <li><b>Strong LLN:</b> almost sure convergence.</li>
+            </ul>
+            <p class="small-note">The precise assumptions depend on the version of the theorem. For i.i.d. variables with a finite first absolute moment, the strong LLN applies.</p>
+          </article>
+          <article class="theorem-card">
+            <span class="tag purple">CLT · Central Limit Theorem</span>
+            <h4>How does the average fluctuate?</h4>
+            <div class="equation">√n (X̄<sub>n</sub> − μ) / σ →<sup>d</sup> N(0,1)</div>
+            <p>After centering and scaling, the sample mean approaches a standard normal distribution.</p>
+            <ul>
+              <li>The convergence is in distribution.</li>
+              <li>It describes the shape and scale of sampling fluctuations.</li>
+            </ul>
+            <p class="small-note">This classical version assumes i.i.d. observations with finite, positive variance.</p>
+          </article>
+        </div>
+        <div class="note-box"><strong>LLN vs CLT:</strong> the LLN tells us that the sample mean gets close to the true mean. The CLT tells us approximately how the sample mean is distributed around that true mean for large samples.</div>
+      </div>
+
+      <div class="subsection">
+        <h3>Why does √n appear so often?</h3>
+        <p>The square root of the sample size appears because variances add under independence, while a sample mean divides a sum by <span class="math">n</span>.</p>
+        <div class="step-equations">
+          <div class="step-equation"><span class="step-label">1 · Sum</span><div class="equation">Var(S<sub>n</sub>) = nσ²</div><p>For independent observations with the same variance, the variance of their sum is the sum of their variances.</p></div>
+          <div class="step-equation"><span class="step-label">2 · Average</span><div class="equation">Var(X̄<sub>n</sub>) = σ²/n</div><p>Dividing the sum by n divides its variance by n².</p></div>
+          <div class="step-equation"><span class="step-label">3 · Standard error</span><div class="equation">SE(X̄<sub>n</sub>) = σ/√n</div><p>The standard deviation is the square root of the variance, so the typical error decreases at rate 1/√n.</p></div>
+        </div>
+        <div class="note-box"><strong>Why independence matters:</strong> in general, Var(S<sub>n</sub>) also contains covariance terms: 2Σ<sub>i&lt;j</sub> Cov(X<sub>i</sub>, X<sub>j</sub>). Independence makes these terms zero. With dependence, the variance may grow at a different rate.</div>
+        <p>This scaling is central to statistical inference. It appears in standard errors, confidence intervals and test statistics. For example, when σ is known, an approximate large-sample confidence interval for μ is:</p>
+        <div class="formula-block"><div class="equation large">X̄<sub>n</sub> ± z<sub>1−α/2</sub> · σ/√n</div></div>
+        <p class="small-note">Here z<sub>1−α/2</sub> is the (1−α/2)-quantile of the standard normal distribution, and 1−α is the confidence level of the two-sided interval. In practice, σ is often unknown and is replaced by the sample standard deviation.</p>
+      </div>
+    </section>
+
+    <section class="section bayes-section" id="bayes">
+      <div class="section-kicker">PART II · CONDITIONAL PROBABILITY & STATISTICAL INFERENCE</div>
+      <h2>Bayesian inference</h2>
+      <p class="section-lead">Bayesian inference combines what is known before observing data with the information contained in new observations. Bayes' theorem provides the mathematical rule for this update.</p>
+
+      <div class="subsection">
+        <h3>Conditional probability</h3>
+        <p>Conditional probability measures the probability of an event A given that another event B has occurred. The information that B occurred changes the reference set to outcomes where B is true.</p>
+        <div class="formula-block">
+          <div class="equation large">P(A | B) = P(A ∩ B) / P(B)</div>
+          <div class="legend"><strong>Where</strong><br><b>P(A | B)</b> – probability of A given B.<br><b>P(A ∩ B)</b> – probability that A and B occur together.<br><b>P(B)</b> – probability of event B, assumed greater than zero.</div>
+        </div>
+        <p>In statistics, conditional probability is also used to describe how likely observed data are under a particular condition or hypothesis. It is therefore a basic building block of statistical inference.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>Bayes' theorem</h3>
+        <p>Bayes' theorem follows from the definition of conditional probability. It reverses the conditioning: it allows us to calculate the probability of a hypothesis after observing evidence.</p>
+        <div class="formula-block">
+          <div class="equation large">P(A | B) = [P(B | A) · P(A)] / P(B)</div>
+          <div class="legend"><strong>Where</strong><br><b>P(A)</b> – prior probability of A.<br><b>P(B | A)</b> – likelihood of observing B if A is true.<br><b>P(B)</b> – marginal probability of the evidence.<br><b>P(A | B)</b> – posterior probability of A after observing B.</div>
+        </div>
+        <p>For a set of mutually exclusive and exhaustive hypotheses A<sub>1</sub>, …, A<sub>k</sub>, the denominator can be calculated using the law of total probability:</p>
+        <div class="equation centered">P(B) = Σ<sub>i=1</sub><sup>k</sup> P(B | A<sub>i</sub>) P(A<sub>i</sub>)</div>
+      </div>
+
+      <div class="subsection">
+        <h3>Prior, likelihood and posterior</h3>
+        <div class="bayes-flow">
+          <article class="bayes-component prior">
+            <span class="component-number">01</span><h4>Prior probability</h4>
+            <div class="equation">P(A)</div>
+            <p>Represents the initial plausibility of a hypothesis before considering the current evidence.</p>
+          </article>
+          <div class="flow-plus">+</div>
+          <article class="bayes-component likelihood">
+            <span class="component-number">02</span><h4>Likelihood</h4>
+            <div class="equation">P(B | A)</div>
+            <p>Measures how compatible the observed evidence is with the hypothesis.</p>
+          </article>
+          <div class="flow-arrow">↓</div>
+          <article class="bayes-component posterior">
+            <span class="component-number">03</span><h4>Posterior probability</h4>
+            <div class="equation">P(A | B)</div>
+            <p>The updated probability of the hypothesis after taking the evidence into account.</p>
+          </article>
+        </div>
+        <div class="note-box"><strong>A useful distinction:</strong> the likelihood P(B | A) is not the probability of the hypothesis A. It describes the probability of the observed evidence under A. The posterior P(A | B), instead, is the updated probability assigned to A after observing B.</div>
+      </div>
+
+      <div class="subsection">
+        <h3>Example 1 · Bayesian reasoning in biometric authentication</h3>
+        <p>Imagine a restricted computer system that uses fingerprint recognition to verify a person's identity. The system compares the scanned fingerprint with the one associated with the claimed account and either accepts or rejects the match. For a simplified, illustrative high-risk scenario, suppose that:</p>
+        <ul class="clean-list">
+          <li>10% of the login attempts are made by the legitimate account owner (prior probability).</li>
+          <li>The system correctly accepts 98% of attempts made by the legitimate owner (genuine acceptance rate).</li>
+          <li>It incorrectly accepts 1% of attempts made by someone else (false acceptance rate).</li>
+        </ul>
+        <p>We want to know: if the system accepts the fingerprint, what is the probability that the attempt was actually made by the legitimate account owner?</p>
+        <div class="calculation-card">
+          <div class="equation">P(Owner | Accepted) =</div>
+          <div class="equation">[0.98 × 0.10] / [(0.98 × 0.10) + (0.01 × 0.90)]</div>
+          <div class="result-number">91.6%</div>
+          <p class="result-caption">Posterior probability that an accepted attempt comes from the legitimate owner.</p>
+        </div>
+        <p>Under these illustrative assumptions, an accepted fingerprint match gives a 91.6% probability that the attempt comes from the legitimate owner. The result depends not only on the biometric system's performance, but also on the prior probability that an attempt is legitimate. These values are hypothetical and should not be interpreted as the measured performance of a real fingerprint system.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>Interactive Bayes calculator</h3>
+        <p>Change the prior probability, genuine acceptance rate and false acceptance rate to see how the posterior probability changes.</p>
+        <div class="calculator">
+          <div class="calc-controls">
+            <label>Prior probability of a legitimate owner <output id="priorOut">10%</output>
+              <input id="prior" type="range" min="0.1" max="50" step="0.1" value="10">
+            </label>
+            <label>Genuine acceptance rate <output id="sensitivityOut">98%</output>
+              <input id="sensitivity" type="range" min="50" max="100" step="1" value="98">
+            </label>
+            <label>False acceptance rate <output id="falsePositiveOut">1%</output>
+              <input id="falsePositive" type="range" min="0" max="20" step="0.1" value="1">
+            </label>
+          </div>
+          <div class="calc-result">
+            <span class="result-label">Posterior probability</span>
+            <strong id="posteriorResult">91.6%</strong>
+            <p id="posteriorExplanation">Given an accepted fingerprint match, this is the estimated probability that the attempt comes from the legitimate owner.</p>
+            <div class="bar-track"><div class="bar-fill" id="posteriorBar"></div></div>
+          </div>
+          <div class="calc-formula" id="calcFormula">P(Owner | Accepted) = (0.98 × 0.10) / [(0.98 × 0.10) + (0.01 × 0.90)]</div>
+        </div>
+        <p class="small-note">This is a simplified model with two possible states (legitimate owner or someone else) and fixed biometric acceptance rates. The example values are hypothetical; the result depends on the assumed prior and likelihood values.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>Example 2 · Learning the bias of a coin</h3>
+        <p>Suppose we do not know whether a coin is fair. We represent the unknown probability of heads by <span class="math">θ</span>. Before tossing the coin, we choose a Beta(2, 2) prior, which is symmetric around 0.5 and expresses an initial preference for values near 0.5 without fixing θ at exactly 0.5.</p>
+        <p>After observing 10 tosses, with 8 heads and 2 tails, the likelihood is proportional to <span class="math">θ<sup>8</sup>(1−θ)<sup>2</sup></span>. Combining it with the prior gives:</p>
+        <div class="formula-block">
+          <div class="equation large">θ | data ∼ Beta(2 + 8, 2 + 2) = Beta(10, 4)</div>
+        </div>
+        <p>The posterior mean is:</p>
+        <div class="equation centered">E[θ | data] = 10 / (10 + 4) ≈ 0.714</div>
+        <p>The observed results shift our estimate towards a coin that is more likely to produce heads. With more observations, the data generally have a stronger influence on the posterior, provided the model is appropriate.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>Applications, advantages and limitations</h3>
+        <div class="pros-cons">
+          <article class="pro-card">
+            <h4>Advantages</h4>
+            <ul>
+              <li>Combines previous knowledge with new evidence.</li>
+              <li>Updates beliefs as additional data become available.</li>
+              <li>Produces direct probability statements about unknown hypotheses or parameters.</li>
+              <li>Can work well with limited data when reliable prior information exists.</li>
+            </ul>
+          </article>
+          <article class="con-card">
+            <h4>Limitations</h4>
+            <ul>
+              <li>Results can depend on the choice of prior, especially with little data.</li>
+              <li>An incorrect likelihood model can lead to misleading conclusions.</li>
+              <li>Complex models may require demanding computations.</li>
+              <li>Prior information may be subjective or difficult to justify.</li>
+            </ul>
+          </article>
+        </div>
+        <p>Bayesian inference is widely used in medical diagnosis, cybersecurity, machine learning, forecasting and scientific research. Its strength is the coherent updating of uncertainty; its reliability still depends on the quality of the assumptions and data.</p>
+      </div>
+    </section>
+
+    <section class="section conclusion" id="conclusion">
+      <div class="section-kicker">CONCLUSION</div>
+      <h2>From convergence to learning from evidence</h2>
+      <p>The modes of convergence provide different ways to describe the limiting behaviour of random variables. The LLN explains why sample averages approach an expected value, while the CLT describes their fluctuations around it and explains the frequent appearance of the square-root sample size.</p>
+      <p>Bayesian inference addresses a complementary question: how should uncertainty about an unknown event or parameter change when new evidence is observed? Bayes' theorem gives a precise rule for combining prior information and likelihood to obtain a posterior probability.</p>
+      <h3>Why assumptions matter</h3>
+      <p>Both topics rely on assumptions about the data and the probability model. Independence and finite variance, for example, play an important role in the classical LLN and CLT. Bayesian conclusions also depend on the prior distribution and the likelihood model. If these assumptions do not reasonably describe the situation, the resulting conclusions may be misleading.</p>
+      <h3>From probability theory to statistical inference</h3>
+      <p>The LLN explains why sample averages become more reliable as the sample size increases. The CLT describes their fluctuations and helps us quantify uncertainty through approximate confidence intervals and statistical tests. These results provide a mathematical foundation for many practical statistical procedures.</p>
+      <h3>Two complementary perspectives</h3>
+      <p>Convergence theory studies how random quantities behave as the amount of data increases. Bayesian inference focuses on how uncertainty about unknown quantities changes when new evidence becomes available. Together, they show how probability theory supports both the long-run properties of statistical methods and the process of learning from data.</p>
+      <p class="final-line">Together, these ideas form an important foundation for understanding probability, statistical estimation and decision-making under uncertainty.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>STATISTICS · PROBABILITY THEORY</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

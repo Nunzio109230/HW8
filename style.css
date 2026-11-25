@@ -1,0 +1,152 @@
+* { box-sizing: border-box; }
+:root {
+  --ink: #24312d;
+  --muted: #68756e;
+  --soft: #f4f6f2;
+  --paper: #ffffff;
+  --line: #e3e9e2;
+  --green: #557b68;
+  --green-dark: #315844;
+  --green-pale: #edf4ee;
+  --blue-pale: #eef3f8;
+  --purple-pale: #f3eff8;
+  --shadow: 0 12px 34px rgba(38, 55, 45, .055);
+}
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+body { margin: 0; background: #f7f8f5; color: var(--ink); font-family: "DM Sans", sans-serif; line-height: 1.68; }
+.container { width: min(1120px, calc(100% - 44px)); margin: 0 auto; }
+.hero { position: relative; overflow: hidden; min-height: 510px; color: #f7faf6; background: radial-gradient(circle at 82% 22%, rgba(173,197,174,.22), transparent 27%), linear-gradient(125deg, #243c32 0%, #385b49 60%, #587765 100%); }
+.hero:after { content: ""; position: absolute; width: 480px; height: 480px; right: -160px; bottom: -270px; border: 1px solid rgba(255,255,255,.15); border-radius: 50%; box-shadow: 0 0 0 38px rgba(255,255,255,.025), 0 0 0 78px rgba(255,255,255,.025); }
+.nav { height: 76px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,.16); position: relative; z-index: 2; }
+.brand { color: #f7faf6; text-decoration: none; font-size: .76rem; letter-spacing: .14em; font-weight: 700; }
+.brand span { color: #b9d0bd; margin: 0 5px; }
+.nav-links { display: flex; gap: 27px; }
+.nav-links a, .footer a { color: rgba(255,255,255,.82); text-decoration: none; font-size: .83rem; }
+.nav-links a:hover, .footer a:hover { color: white; }
+.hero-content { position: relative; z-index: 1; padding: 83px 0 90px; }
+.eyebrow, .section-kicker { font-size: .72rem; letter-spacing: .18em; font-weight: 700; color: #a9c7b0; }
+.hero h1 { font-family: "Playfair Display", serif; font-size: clamp(2.7rem, 6vw, 4.7rem); line-height: 1.08; letter-spacing: -.035em; font-weight: 500; margin: 18px 0; }
+.hero h1 em { color: #c5d8c6; font-weight: 500; }
+.hero-lead { color: rgba(255,255,255,.78); font-size: 1.08rem; max-width: 570px; }
+.hero-link { display: inline-flex; gap: 16px; align-items: center; margin-top: 23px; color: white; text-decoration: none; font-size: .9rem; border-bottom: 1px solid rgba(255,255,255,.45); padding-bottom: 7px; }
+.hero-mark { position: absolute; right: max(22px, calc((100% - 1120px)/2)); bottom: 32px; color: rgba(255,255,255,.5); font-size: .72rem; letter-spacing: .16em; }
+.main-content { padding-bottom: 35px; }
+.section { padding: 76px 0 25px; }
+.section-kicker { color: var(--green); }
+h2, h3, h4 { color: var(--ink); }
+h2 { font-family: "Playfair Display", serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 500; line-height: 1.18; margin: 10px 0 17px; letter-spacing: -.02em; }
+h3 { font-family: "Playfair Display", serif; font-weight: 600; font-size: 1.45rem; margin: 0 0 12px; }
+h4 { margin: 8px 0 10px; font-size: 1.04rem; }
+p { margin: 0 0 13px; }
+.intro-text, .section-lead { max-width: 820px; color: var(--muted); font-size: 1.02rem; }
+.intro-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; margin-top: 30px; }
+.intro-card, .mode-card, .theorem-card, .bayes-component, .pro-card, .con-card { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); }
+.intro-card { padding: 25px 27px; }
+.card-number, .mode-index { display: inline-flex; color: var(--green); font-size: .75rem; font-weight: 700; letter-spacing: .1em; margin-bottom: 14px; }
+.intro-card h3 { font-size: 1.35rem; }
+.intro-card p { color: var(--muted); margin-bottom: 0; }
+.definition-panel { background: #edf3ed; border: 1px solid #dce8dc; padding: 24px 27px; border-radius: 14px; margin: 26px 0 22px; }
+.definition-panel h3 { font-size: 1.25rem; }
+.definition-panel p:last-child { margin-bottom: 0; }
+.small-note { color: var(--muted); font-size: .84rem; }
+.math { font-family: Georgia, serif; font-style: italic; color: #304c3b; white-space: nowrap; }
+.mode-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 17px; margin-top: 22px; }
+.mode-card { padding: 23px 24px; }
+.mode-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.mode-index { margin: 0; }
+.tag { display: inline-block; border-radius: 99px; background: #f0f3ef; color: #617467; padding: 4px 10px; font-size: .68rem; font-weight: 700; letter-spacing: .04em; }
+.mode-card h3 { font-size: 1.3rem; margin-bottom: 12px; }
+.equation { font-family: Georgia, "Times New Roman", serif; color: #2f5540; font-size: 1.28rem; line-height: 1.55; text-align: center; padding: 12px 8px; background: #f5f8f4; border-radius: 9px; margin: 12px 0 15px; overflow-wrap: anywhere; }
+.equation.large { font-size: clamp(1.25rem, 2.8vw, 1.7rem); padding: 18px 10px; }
+.legend { background: #f7f8f5; border-radius: 9px; padding: 12px 15px; color: #65736a; font-size: .79rem; line-height: 1.8; margin: 14px 0; }
+.legend strong { color: #40594a; }
+.example { font-size: .9rem; color: #53645a; }
+.role { font-size: .88rem; padding-top: 12px; border-top: 1px solid var(--line); margin: 14px 0 0; }
+.subsection { margin-top: 52px; }
+.subsection > p { color: #58675e; }
+.implication { display: flex; flex-direction: column; align-items: center; gap: 5px; margin: 24px auto 14px; max-width: 450px; }
+.imp-box { width: min(100%, 340px); padding: 12px 16px; text-align: center; background: #f0f5ef; border: 1px solid #dce8db; border-radius: 9px; font-weight: 600; font-size: .91rem; }
+.imp-box.strong { background: #e5f0e6; border-color: #cbdccb; color: #315b40; }
+.imp-box.blue { background: #edf2f8; border-color: #d9e2ef; color: #415d7d; }
+.imp-arrow { color: #5b896b; font-size: 1.25rem; line-height: 1; }
+.blue-arrow { color: #6683a5; }
+.implication.second { margin-top: 22px; }
+.note-box { background: #f1f5f1; border-left: 3px solid #7b9a80; padding: 15px 18px; border-radius: 0 9px 9px 0; color: #526258; font-size: .9rem; margin: 20px 0; }
+.theorem-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 17px; margin: 22px 0; }
+.theorem-card { padding: 23px; }
+.theorem-card .tag { margin-bottom: 9px; }
+.tag.green { background: #eaf3eb; color: #456c4d; }
+.tag.purple { background: #f1edf7; color: #75618e; }
+.theorem-card h4 { font-family: "Playfair Display", serif; font-size: 1.3rem; }
+.theorem-card ul, .clean-list, .pro-card ul, .con-card ul { padding-left: 20px; color: #59675e; }
+.theorem-card li, .clean-list li, .pro-card li, .con-card li { margin: 6px 0; }
+.formula-block { background: white; border: 1px solid var(--line); border-radius: 13px; padding: 15px 19px; margin: 17px 0; box-shadow: var(--shadow); }
+.formula-block .equation { margin: 0; }
+.formula-block .legend { margin-bottom: 0; }
+.step-equations { display: grid; grid-template-columns: repeat(3,1fr); gap: 13px; margin: 21px 0; }
+.step-equation { padding: 17px; border: 1px solid var(--line); border-radius: 12px; background: white; }
+.step-label { font-size: .7rem; color: var(--green); letter-spacing: .1em; font-weight: 700; }
+.step-equation .equation { font-size: 1.13rem; }
+.step-equation p { color: var(--muted); font-size: .85rem; margin: 0; }
+.centered { text-align: center; font-family: Georgia, serif; font-size: 1.2rem; color: #315640; padding: 12px; }
+.bayes-section { border-top: 1px solid var(--line); margin-top: 45px; }
+.bayes-flow { display: grid; grid-template-columns: 1fr 35px 1fr; gap: 13px; align-items: center; margin: 23px 0; }
+.bayes-component { padding: 20px; }
+.bayes-component .equation { margin: 8px 0; }
+.bayes-component p { font-size: .87rem; color: var(--muted); margin: 0; }
+.component-number { color: var(--green); font-size: .72rem; font-weight: 700; letter-spacing: .1em; }
+.bayes-component.prior { background: #f1f5f9; }
+.bayes-component.likelihood { background: #eff5ef; }
+.bayes-component.posterior { background: #f5f1f8; grid-column: 1 / -1; width: min(100%, 520px); justify-self: center; }
+.flow-plus, .flow-arrow { color: #829187; text-align: center; font-size: 1.5rem; font-weight: 400; }
+.flow-arrow { grid-column: 1 / -1; line-height: .7; }
+.calculation-card { background: #f0f5ef; border: 1px solid #dce8dc; border-radius: 13px; padding: 19px; text-align: center; margin: 18px 0; }
+.calculation-card .equation { background: transparent; margin: 0; font-size: 1.05rem; }
+.result-number { font-family: "Playfair Display", serif; font-size: 3rem; color: #315c40; line-height: 1.2; margin-top: 5px; }
+.result-caption { color: var(--muted); font-size: .84rem; margin: 0; }
+.calculator { display: grid; grid-template-columns: 1.1fr .9fr; gap: 22px; background: white; border: 1px solid var(--line); border-radius: 14px; padding: 23px; box-shadow: var(--shadow); margin: 18px 0; }
+.calc-controls { display: flex; flex-direction: column; gap: 19px; }
+.calc-controls label { display: block; color: #45584b; font-size: .88rem; font-weight: 600; }
+.calc-controls output { float: right; color: var(--green-dark); font-variant-numeric: tabular-nums; }
+input[type=range] { display: block; width: 100%; margin-top: 13px; accent-color: #557b68; cursor: pointer; }
+.calc-result { background: #eff5ef; border-radius: 11px; padding: 20px; display: flex; flex-direction: column; justify-content: center; }
+.result-label { color: #617267; font-size: .78rem; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; }
+.calc-result strong { font-family: "Playfair Display", serif; font-size: 2.8rem; color: #315b40; line-height: 1.25; margin: 5px 0; }
+.calc-result p { color: #607066; font-size: .82rem; }
+.bar-track { width: 100%; height: 9px; border-radius: 99px; background: #dce7dc; overflow: hidden; }
+.bar-fill { width: 16.1%; height: 100%; background: #668e70; border-radius: inherit; transition: width .2s ease; }
+.calc-formula { grid-column: 1 / -1; color: #68756d; background: #f7f8f5; border-radius: 8px; padding: 12px 14px; font-family: Georgia, serif; font-size: .92rem; overflow-wrap: anywhere; }
+.pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+.pro-card, .con-card { padding: 22px; box-shadow: none; }
+.pro-card h4 { color: #47724f; }
+.con-card h4 { color: #866b50; }
+.pro-card ul, .con-card ul { margin-bottom: 0; font-size: .88rem; }
+.conclusion { border-top: 1px solid var(--line); margin-top: 45px; padding-bottom: 70px; }
+.conclusion p { color: #58675e; max-width: 900px; }
+.final-line { font-family: "Playfair Display", serif; font-size: 1.25rem; color: #315640 !important; padding-top: 12px; }
+.footer { background: #263e33; padding: 22px 0; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,.65); font-size: .72rem; letter-spacing: .12em; }
+@media (max-width: 760px) {
+  .nav-links { gap: 12px; }
+  .nav-links a { font-size: .72rem; }
+  .hero { min-height: 460px; }
+  .hero-content { padding: 75px 0; }
+  .mode-grid, .theorem-grid, .intro-grid, .pros-cons { grid-template-columns: 1fr; }
+  .step-equations { grid-template-columns: 1fr; }
+  .calculator { grid-template-columns: 1fr; }
+  .bayes-flow { grid-template-columns: 1fr; }
+  .flow-plus { line-height: .7; }
+  .bayes-component.posterior { grid-column: auto; }
+  .flow-arrow { grid-column: auto; }
+}
+@media (max-width: 500px) {
+  .container { width: min(100% - 30px, 1120px); }
+  .nav { height: 66px; }
+  .nav-links { gap: 9px; }
+  .nav-links a { font-size: .65rem; }
+  .brand { font-size: .65rem; }
+  .hero h1 { font-size: 2.65rem; }
+  .section { padding-top: 57px; }
+  .mode-card, .theorem-card { padding: 19px; }
+  .footer-inner { font-size: .62rem; }
+}
